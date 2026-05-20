@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pattern</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <section class="control-group">
+        <div class="row">
+          <label class="control">
+            <span>Background</span>
+            <input type="color" id="bgColor" value="#ffffff">
+          </label>
+        </div>
+      </section>
+
+      <section class="control-group">
+        <h3>Center</h3>
+        <div class="row">
+          <label class="control">
+            <span>Radius</span>
+            <input type="range" id="medRadius" min="20" max="220" value="70">
+            <output id="medRadiusOut">70</output>
+          </label>
+        </div>
+        <div class="row">
+          <label class="control">
+            <span>Symmetry</span>
+            <select id="medSymmetry">
+              <option>6</option>
+              <option selected>8</option>
+              <option>10</option>
+              <option>12</option>
+              <option>16</option>
+            </select>
+          </label>
+          <label class="control">
+            <span>Point</span>
+            <input type="range" id="medPointiness" min="10" max="90" value="55">
+          </label>
+        </div>
+        <div class="row">
+          <label class="control">
+            <span>Star</span>
+            <input type="color" id="medColor" value="#000000">
+          </label>
+          <label class="control">
+            <span>Field</span>
+            <input type="color" id="medBgColor" value="#ffffff">
+          </label>
+        </div>
+      </section>
+
+      <section class="control-group">
+        <h3>Rings</h3>
+        <div id="layerList" class="layer-list"></div>
+        <button id="addLayer" class="btn btn-secondary">Add</button>
+      </section>
+
+      <section class="control-group actions">
+        <button id="exportPng" class="btn btn-primary">Export</button>
+        <button id="reset" class="btn btn-ghost">Reset</button>
+      </section>
+
+    </div>
+  </aside>
+
+  <main class="canvas-area">
+    <div class="canvas-wrap">
+      <canvas id="canvas" width="1400" height="1400"></canvas>
+    </div>
+  </main>
+</div>
+
+<template id="layerTemplate">
+  <div class="layer" draggable="true">
+    <div class="layer-header">
+      <span class="drag-handle">::</span>
+      <span class="layer-name"></span>
+      <button class="icon-btn toggle">v</button>
+      <button class="icon-btn delete">x</button>
+    </div>
+    <div class="layer-body">
+      <div class="row">
+        <label class="control">
+          <span>Pattern</span>
+          <select class="pattern-type">
+            <option value="star">Star</option>
+            <option value="rosette">Rosette</option>
+            <option value="kites">Kites</option>
+            <option value="hexagonal">Hex</option>
+            <option value="strapwork">Strap</option>
+          </select>
+        </label>
+        <label class="control">
+          <span>Symmetry</span>
+          <select class="symmetry">
+            <option>6</option><option>8</option><option>10</option>
+            <option>12</option><option>16</option>
+          </select>
+        </label>
+      </div>
+      <div class="row">
+        <label class="control">
+          <span>Width</span>
+          <input type="range" class="width" min="30" max="220" value="90">
+          <output class="width-out">90</output>
+        </label>
+      </div>
+      <div class="row palette-row">
+        <span class="label">Palette</span>
+        <div class="swatches">
+          <input type="color" class="swatch s0">
+          <input type="color" class="swatch s1">
+          <input type="color" class="swatch s2">
+          <input type="color" class="swatch s3">
+        </div>
+      </div>
+      <div class="divider">Border</div>
+      <div class="row">
+        <label class="control">
+          <span>Style</span>
+          <select class="border-style">
+            <option value="none">None</option>
+            <option value="solid">Solid</option>
+            <option value="diamond">Diamond</option>
+            <option value="zigzag">Zigzag</option>
+            <option value="dotted">Dotted</option>
+          </select>
+        </label>
+        <label class="control">
+          <span>Size</span>
+          <input type="range" class="border-thickness" min="0" max="40" value="8">
+          <output class="border-thickness-out">8</output>
+        </label>
+        <label class="control">
+          <span>Color</span>
+          <input type="color" class="border-color" value="#000000">
+        </label>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script src="main.js"></script>
+</body>
+</html>

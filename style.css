@@ -1,0 +1,337 @@
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --muted: #888888;
+  --line: #000000;
+  --hairline: #e5e5e5;
+  --panel: #fafafa;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  width: 280px;
+  flex: 0 0 280px;
+  background: var(--bg);
+  border-right: 1px solid var(--line);
+  overflow-y: auto;
+}
+
+.sidebar-inner {
+  padding: 16px 14px;
+}
+
+.control-group {
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.control-group:last-child {
+  border-bottom: none;
+}
+
+.control-group h3 {
+  margin: 0 0 10px 0;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+}
+
+/* ---------- Form controls ---------- */
+.row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 6px;
+  align-items: center;
+}
+
+.row:last-child { margin-bottom: 0; }
+
+.control {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.control > span {
+  color: var(--muted);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.control output {
+  font-size: 10px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+select,
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  padding: 4px 6px;
+  font-size: 12px;
+  font-family: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+select {
+  background-image: linear-gradient(45deg, transparent 50%, var(--fg) 50%),
+                    linear-gradient(135deg, var(--fg) 50%, transparent 50%);
+  background-position: calc(100% - 10px) 50%, calc(100% - 6px) 50%;
+  background-size: 4px 4px;
+  background-repeat: no-repeat;
+  padding-right: 18px;
+}
+
+select:focus,
+input:focus {
+  outline: none;
+  border-color: var(--fg);
+  box-shadow: inset 0 0 0 1px var(--fg);
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 18px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 1px;
+  background: var(--line);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background: var(--fg);
+  margin-top: -4.5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 0;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 1px;
+  background: var(--line);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: var(--fg);
+  cursor: pointer;
+  border: none;
+  border-radius: 0;
+}
+
+input[type="color"] {
+  width: 100%;
+  height: 22px;
+  padding: 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  cursor: pointer;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  padding: 6px 10px;
+  border-radius: 0;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.btn-primary {
+  background: var(--fg);
+  color: var(--bg);
+  flex: 1;
+}
+
+.btn-primary:hover {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.btn-secondary {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.btn-ghost {
+  background: var(--bg);
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--fg);
+  font-size: 12px;
+  padding: 0 4px;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1;
+}
+
+.icon-btn:hover { color: var(--muted); }
+
+/* ---------- Layer list ---------- */
+.layer-list { display: flex; flex-direction: column; gap: 4px; }
+
+.layer {
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.layer.dragging { opacity: 0.4; }
+.layer.drop-target { border-style: dashed; }
+
+.layer-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.layer.expanded .layer-header {
+  border-bottom: 1px solid var(--line);
+}
+
+.drag-handle {
+  cursor: grab;
+  color: var(--muted);
+  letter-spacing: -2px;
+  padding-right: 2px;
+}
+
+.drag-handle:active { cursor: grabbing; }
+
+.layer-name {
+  flex: 1;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.layer .toggle { transition: transform 120ms; }
+.layer.expanded .toggle { transform: rotate(180deg); }
+
+.layer-body {
+  padding: 8px;
+  display: none;
+  background: var(--panel);
+}
+
+.layer.expanded .layer-body { display: block; }
+
+.divider {
+  margin: 8px 0 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--hairline);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+}
+
+.palette-row .label {
+  color: var(--muted);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: 48px;
+}
+
+.palette-row .swatches {
+  display: flex;
+  gap: 3px;
+  flex: 1;
+}
+
+.palette-row .swatch {
+  flex: 1;
+  height: 22px;
+}
+
+/* ---------- Canvas area ---------- */
+.canvas-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  padding: 24px;
+  overflow: hidden;
+}
+
+.canvas-wrap {
+  width: min(95vh, calc(100vw - 280px - 48px));
+  aspect-ratio: 1;
+  max-width: 100%;
+  border: 1px solid var(--line);
+}
+
+#canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ---------- Scrollbar ---------- */
+.sidebar::-webkit-scrollbar { width: 6px; }
+.sidebar::-webkit-scrollbar-track { background: var(--bg); }
+.sidebar::-webkit-scrollbar-thumb { background: var(--line); }
